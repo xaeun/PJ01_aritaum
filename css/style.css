@@ -1,0 +1,317 @@
+@charset "utf-8";
+/* style.css */
+
+#wrap{
+    min-width: 1240px;
+    /* 
+        최소너비값 속성.
+        #wrap의 기본 너비값은 브라우저의 너비값과 동일함.
+        단, 브라우저의 너비값이 줄어들어도 #wrap의 너비값은 1240px까지만 줄어들고 더이상 작아지지 않도록 고정시킴.
+        1240px = 안전사이즈 1200px + 좌우 여백 20px씩
+        최소너비값을 1200px으로 작성해도 됨. 1200px으로 작성하면 브라우저 가장자리에 컨텐츠가 바짝 붙어버려 가독성이 떨어지기때문에 좌우 여백을 20px씩 더해놓은 것임.
+        최소너비값을 잡아놓지 않으면 브라우저 폭이 줄어들었을 때 가로를 채우는 선, 배경색, 이미지가 제대로 표현되지 않음.
+    */
+}
+
+/* 헤더 */
+#h_in{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* 
+        헤더에서는 align-items: center 사용 안되는 경우가 더 많음.
+        .gnb에 마우스 올렸을 때 하위 메뉴가 출력되면 .gnb의 세로 공간크기가 달라지게 됨. align-items: center가 적용되면 세로 가운데 정렬을 위해 .gnb메뉴가 위로 올라가버리기 때문에 사용할 수 없음.
+    */
+    width: 1200px;
+    height: 80px;
+    /* 
+        헤더영역은 모든 페이지에서 항상 같은 크기로 출력되고, 구성되는 내용의 특성상 불규칙한 배열이 많이 일어나기때문에 높이값 고정해서 사용하는 경우가 대부분임.
+        => 본문영역은 높이값 안 쓰는게 기본  
+    */
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo{
+    margin-top: 30px;
+    /* 
+        #h_in의 첫 번째 자식태그라 원래는 margin-top 사용하면 간격이 #h_in의 바깥으로 생성됨.
+        그러나 #h_in에 flex처리를 했기때문에 .logo에 margin-top을 처리하면 #h_in과 .logo사이에 간격이 발생하게 됨. (float사용했을때도 동일함)
+    */
+}
+.logo a{
+    display: block;
+    width: 138px;
+    height: 20px;
+    background-color: aqua;
+    background-image: url(../img/logo.gif);
+    text-indent: -9999px;
+}
+.gnb{
+    margin-top: 30px;
+}
+.gnb li{
+    float: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.gnb li a{
+    color: #222;
+    font-size: 17px;
+}
+.gnb li a:hover{
+    color: #cf003e;
+    font-weight: 700;
+    letter-spacing: -0.05px;
+}
+.utill{
+    margin-top: 30px;
+}
+.utill ul{
+    display: flex;
+}
+.utill li{
+    margin-left: 15px;
+}
+.utill li a{
+    color: #555;
+}
+.bt_search_open a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/icon_search.png);
+    text-indent: -9999px;
+}
+.bt_cart_open a{
+    display: block;
+    width: 22px;
+    height: 20px;
+    background-image: url(../img/icon_cart.png);
+    text-indent: -9999px;
+}
+
+/* 본문1 - 메인 슬라이드 */
+.main_slide{
+    margin-bottom: 50px;
+    overflow: hidden;
+    /* 
+        img태그에 margin-left를 마이너스로 처리해 안전사이즈 영역 중앙에 이미지가 출력되도록 맞췄으나, 
+        브라우저의 너비값이 1200~1400 사이일 때 브라우저의 가로 스크롤바가 없어야 정상이지만 img태그 때문에 가로 스크롤바가 만들어지게 됨.
+        브라우저와 같은 너비값으로 인식되는 .main_slide영역을 만들어 overflow: hidden 처리하면 브라우저 오른쪽 바깥으로 배치되는 img태그 영역을 보이지 않게 처리할 수 있음. 
+        * overflow: hidden은 되도록 해당 문제가 발생하는 각각의 섹션에서 해결하도록 할 것. 전체 영역에 처리할 경우 기능 처리에 문제 있을 수 있음.
+    */
+}
+.main_slide_img{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main_slide img{
+    margin-left: -200px;
+    /* 
+        (이미지 너비값 1600px - 안전사이즈 너비값 1200px) / 2
+    */
+}
+
+/* 본문2*/
+.event{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+.event ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.event li{
+    float: left;
+}
+.event li:first-child{
+    margin-right: 20px;
+}
+
+/* 본문3 - 베스트 아이템 */
+.best{
+    position: relative;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+.best h1{
+    margin-bottom: 25px;
+    font-size: 22px;
+    /* line-height: 22px; */
+    line-height: 1em;
+    /* 
+        행간 1em = 현재 태그 폰트 크기 * 1
+        행간 1.5em = 현재 태그 폰트 크기 * 1.5
+        -----
+        폰트 크기 1.5em = 부모 태그 폰트 크기 * 1.5
+    */
+    color: #444;
+    font-weight: 500;
+}
+.best h1 span{
+    font-weight: 400;
+}
+.item_list ul{
+    display: flex;
+    justify-content: space-between;
+}
+.item_list li{
+    width: 285px;
+    text-align: center;
+}
+.item_photo{
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.item_photo img{
+    width: 100%;
+    height: auto;
+    transition: 0.3s;
+}
+.item_list li:hover img{
+    transform: scale(1.1);
+}
+.item_brand{
+    margin-bottom: 4px;
+}
+.item_brand a{
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+}
+.item_name{
+    height: 40px;
+    margin-bottom: 10px;
+}
+.item_name a{
+    font-size: 17px;
+    color: #555;
+}
+.item_price{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.item_price .num{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+.item_price .won{
+    display: block;
+    width: 13px;
+    height: 11px;
+    margin-top: 6px;
+    margin-right: 4px;
+    background-image: url(../img/won.png);
+    text-indent: -99999px;
+}
+.best_more{
+    position: absolute;
+    top: 3px;
+    right: 0;
+}
+.best_more a{
+    padding-right: 16px;
+    color: #777;
+    background-image: url(../img/icon_plus.png);
+    background-repeat: no-repeat;
+    background-position: right 0 top 5px;
+}
+
+/* 본문4 - 프로모션 */
+.promotion{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+.promotion ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.promotion li{
+    position: relative;
+    float: left;
+    width: 380px;
+    margin-right: 30px;
+}
+.promotion li:last-child{
+    margin-right: 0;
+}
+.prom_text{
+    position: absolute;
+    top: 58px;
+    left: 20px;
+    font-size: 16px;
+    color: #000;
+    opacity: 0.8;
+}
+
+/* 푸터 */
+#footer{
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 45px;
+}
+#f_in{
+    position: relative;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.f_menu{
+    margin-bottom: 20px;
+}
+.f_menu ul{
+    display: flex;
+}
+.f_menu li{
+    margin-right: 15px;
+}
+.f_menu li a{
+    color: #555;
+}
+.f_menu .point a{
+    color: #cf003e;
+}
+.f_info{
+    color: #666;
+}
+.f_info .mr{
+    margin-right: 12px;
+}
+.f_info a{
+    color: #666;
+}
+.f_kg{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.kg_logo{
+    width: 79px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-image: url(../img/inicis.png);
+    text-indent: -9999px;
+}
+.kg_text{
+    margin-bottom: 13px;
+    color: #666;
+}
+.kg_link a{
+    padding-right: 12px;
+    color: #666;
+    background-image: url(../img/arrow01.png);
+    background-repeat: no-repeat;
+    background-position: right 0 top 7px;
+}
